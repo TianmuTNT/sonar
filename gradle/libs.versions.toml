@@ -9,7 +9,7 @@ pluginyml = "0.6.0"
 [plugins]
 indra-git = "net.kyori.indra.git:3.1.3"
 shadow = "com.gradleup.shadow:8.3.8"
-spotless = "com.diffplug.spotless:7.0.4"
+spotless = "com.diffplug.spotless:7.1.0"
 pluginyml-bungee = { id = "net.minecrell.plugin-yml.bungee", version.ref = "pluginyml" }
 pluginyml-bukkit = { id = "net.minecrell.plugin-yml.bukkit", version.ref = "pluginyml" }
 
@@ -28,12 +28,12 @@ bstats-bungee = { module = "org.bstats:bstats-bungeecord", version.ref = "bstats
 bstats-bukkit = { module = "org.bstats:bstats-bukkit", version.ref = "bstats" }
 bstats-velocity = { module = "org.bstats:bstats-velocity", version.ref = "bstats" }
 imagefilters = "com.jhlabs:filters:2.0.235-1"
-caffeine = "com.github.ben-manes.caffeine:caffeine:3.2.1"
+caffeine = "com.github.ben-manes.caffeine:caffeine:3.2.2"
 annotations = "org.jetbrains:annotations:26.0.2"
 simpleyaml = "com.github.Carleslc.Simple-YAML:Simple-Yaml:1.8.4"
 ormlite = "com.j256.ormlite:ormlite-jdbc:6.1"
 lombok = "org.projectlombok:lombok:1.18.38"
 bungeecord = "net.md-5:bungeecord-proxy:1.21-SNAPSHOT"
-velocity = "com.velocitypowered:velocity-proxy:3.4.0-SNAPSHOT"
+velocity = "io.papermc.velocity:velocity-proxy:3.4.0-SNAPSHOT"
 # We have to use 1.8.8 for backwards compatibility
 spigot = "org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT"
