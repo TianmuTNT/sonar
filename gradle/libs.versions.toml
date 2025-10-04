@@ -1,5 +1,5 @@
 [versions]
-netty = "4.2.5.Final"
+netty = "4.2.6.Final"
 adventure = "4.24.0"
 adventure-platform = "4.4.1"
 bstats = "3.1.0"
@@ -32,8 +32,8 @@ caffeine = "com.github.ben-manes.caffeine:caffeine:3.2.2"
 annotations = "org.jetbrains:annotations:26.0.2"
 simpleyaml = "com.github.Carleslc.Simple-YAML:Simple-Yaml:1.8.4"
 ormlite = "com.j256.ormlite:ormlite-jdbc:6.1"
-lombok = "org.projectlombok:lombok:1.18.40"
+lombok = "org.projectlombok:lombok:1.18.42"
 bungeecord = "net.md-5:bungeecord-proxy:1.21-SNAPSHOT"
 velocity = "io.papermc.velocity:velocity-proxy:3.4.0-SNAPSHOT"
-# We have to use 1.8.8 for backwards compatibility
-spigot = "org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT"
+# We have to use 1.16.5 for backwards compatibility
+spigot = "org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT"
