@@ -8,7 +8,7 @@
 # |  $$$$$$/|  $$$$$$/| $$  | $$|  $$$$$$$| $$
 #  \______/  \______/ |__/  |__/ \_______/|__/
 #
-# დახმარება გჭირდება ან კითხვა გაქვს? https://jonesdev.xyz/discord
+# დახმარება გჭირდება ან კითხვა გაქვს? https://sonar.top/discord
 # საწყისი კოდი: https://github.com/jonesdevelopment/sonar
 # Documentation: https://docs.jonesdev.xyz/administration/configuring-sonar
 # Copyright Jones Development and Sonar Contributors, licensed under GPL-3.0
@@ -43,7 +43,7 @@ attack-tracker:
 # შენიშვნა: IP მისამართები ინახება უბრალო ტექსტში. თქვენ ხართ პასუხისმგებელი თქვენი მონაცემთა ბაზის უსაფრთხოებაზე!
 database:
   # მონაცემთა ბაზის ტიპები, რომლებიც Sonar-ს შეუძლია გამოიყენოს უკვე შემოწმებული მოთამაშეების შესანახად
-  # შესაძლო ტიპები: NONE, MYSQL, MARIADB, H2
+  # შესაძლო ტიპები: NONE, MYSQL, MARIADB, POSTGRESQL, H2
   type: NONE
   # ფაილი სონარ_ის ფოლდერში რომელიც ინახავს H2 database_ს
   filename: verified_players
@@ -111,6 +111,7 @@ verification:
       background: ''
       # რუკის სტილი CAPTCHA (ნაგულისხმევი: 'modern').
       # ძველი დიზაინის გამოსაყენებლად დააყენეთ ეს 'legacy'.
+      # To use an experimental design, set this to 'complex'.
       style: 'modern'
       # რამდენი პასუხი უნდა მოამზადოს Sonar-მა?
       # ეს ხდება ასინქრონულად (ანუ ამის გამოთვლას სერვერი არ დაელოდება) უკანა ფონზე
@@ -129,7 +130,7 @@ verification:
       # უნდა შეამოწმოს თუ არა Sonar-მა ნამდვილია თუ არა მოთამაშის სახელი? (რეკომენდებულია)
       enabled: true
       # Regex-ი მოთამაშის ბრენდების დასადასტურებლად ვერიფიკაციის დროს
-      valid-regex: ^[!-~ ]+$
+      valid-regex: ^[!-~ §]+$
       # მოთამაშის კლიენტის სახელის მაქსიმალური სიგრძე ვერიფიკაციის დროს
       max-length: 64
 
@@ -184,6 +185,9 @@ verification:
   # ეს ფუნქცია ექსპერიმენტულია და შეიძლება გამოიწვიოს პრობლემები
   # თუ ეს გამორთულია, Bedrock მოთამაშეები გამოვლენილი იქნება
   check-geyser-players: false
+  # უნდა შეამოწმოს Sonar-მა EaglercraftX-ის მოთამაშეებიც?
+  # ეს ფუნქცია ექსპერიმენტულია და შესაძლოა პრობლემები გამოიწვიოს
+  check-eagler-players: false
   # დროის ოდენობა, რომელიც უნდა გავიდეს, სერვერთან კავშირის გარეშე, სანამ მოთამაშე დროებით გავარდება სერვერიდან.
   # (ეს არის ნაჩვენები მილიწამებში: 1 წამი = 1000 მილიწამი)
   read-timeout: 8000

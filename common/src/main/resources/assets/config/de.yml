@@ -8,7 +8,7 @@
 # |  $$$$$$/|  $$$$$$/| $$  | $$|  $$$$$$$| $$
 #  \______/  \______/ |__/  |__/ \_______/|__/
 #
-# Brauchst du Hilfe? https://jonesdev.xyz/discord
+# Brauchst du Hilfe? https://sonar.top/discord
 # Source code: https://github.com/jonesdevelopment/sonar
 # Dokumentation: https://docs.jonesdev.xyz/administration/configuring-sonar
 # Copyright Jones Development and Sonar Contributors, lizenziert unter GPL-3.0
@@ -41,7 +41,7 @@ attack-tracker:
 # Beachte: IP adressen werden im Klartext gespeichert. Du bist für die Sicherheit der Datenbank verantwortlich
 database:
   # Typ von Datenbank die Sonar verwenden soll, um verifizierte Spielerdaten zu speichern
-  # Mögliche Typen: NONE, MYSQL, MARIADB, H2
+  # Mögliche Typen: NONE, MYSQL, MARIADB, POSTGRESQL, H2
   type: NONE
   # Datei im Plugin-Verzeichnis von Sonar, die für die H2-Datenbank verwendet wird
   filename: verified_players
@@ -109,6 +109,7 @@ verification:
       background: ''
       # Stil der Karte CAPTCHA (Standard: 'modern').
       # Um das alte Design zu verwenden, setzen Sie dies auf 'legacy'.
+      # To use an experimental design, set this to 'complex'.
       style: 'modern'
       # Wie viele Antworten soll Sonar vorbereiten?
       # Dieser Vorgang erfolgt asynchron im Hintergrund
@@ -127,7 +128,7 @@ verification:
       # Soll Sonar auf gültige Client-Marken prüfen? (Empfohlen)
       enabled: true
       # Regex zur Validierung von Client-Marken während der Überprüfung
-      valid-regex: ^[!-~ ]+$
+      valid-regex: ^[!-~ §]+$
       # Maximale Länge der Client-Marke während der Überprüfung
       max-length: 64
 
@@ -183,6 +184,9 @@ verification:
   # Diese Funktion ist experimentell und kann Probleme verursachen
   # Wenn dies deaktiviert ist, werden Bedrock-Spieler übersprungen
   check-geyser-players: false
+  # Sollte Sonar auch EaglercraftX-Spieler überprüfen?
+  # Diese Funktion ist experimentell und kann zu Problemen führen.
+  check-eagler-players: false
   # Die Zeit, seit der der Spieler keine Pakete mehr sendet, bevor er die Verbindung trennt
   # (Dieser Wert stellt die Zeit in Millisekunden dar: 1 Sekunde = 1000 Millisekunden)
   read-timeout: 8000

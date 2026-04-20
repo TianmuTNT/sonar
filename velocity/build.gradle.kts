@@ -3,7 +3,6 @@ dependencies {
   implementation(project(":common"))
 
   compileOnly(rootProject.libs.velocity)
-  testCompileOnly(rootProject.libs.velocity)
 
   implementation(rootProject.libs.bstats.velocity)
   implementation(rootProject.libs.libby.velocity)
@@ -14,7 +13,7 @@ tasks {
     val props = mapOf(
       "version" to rootProject.version.toString(),
       "description" to rootProject.description,
-      "url" to "https://jonesdev.xyz/discord/",
+      "url" to "https://sonar.top/discord/",
       "main" to "xyz.jonesdev.sonar.velocity.SonarVelocityPlugin"
     )
     inputs.properties(props)

@@ -8,7 +8,7 @@ bukkit {
   name = rootProject.name
   main = "xyz.jonesdev.sonar.bukkit.SonarBukkitPlugin"
   authors = listOf("Jones Development", "Sonar Contributors")
-  website = "https://jonesdev.xyz/discord/"
+  website = "https://sonar.top/discord/"
   load = BukkitPluginDescription.PluginLoadOrder.POSTWORLD
   softDepend = listOf("Geyser-Spigot", "floodgate", "Protocolize", "ProtocolSupport",
     "ViaVersion", "packetevents", "ProtocolLib", "FastLogin")
@@ -32,7 +32,6 @@ dependencies {
   implementation(project(":common"))
 
   compileOnly(rootProject.libs.spigot)
-  testCompileOnly(rootProject.libs.spigot)
 
   implementation(rootProject.libs.adventure.platform.bukkit) {
     exclude(module = "adventure-nbt")

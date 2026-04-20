@@ -8,7 +8,7 @@
 # |  $$$$$$/|  $$$$$$/| $$  | $$|  $$$$$$$| $$
 #  \______/  \______/ |__/  |__/ \_______/|__/
 #
-# Besoin d'aide ou d'autres questions ? https://jonesdev.xyz/discord
+# Besoin d'aide ou d'autres questions ? https://sonar.top/discord
 # Code source : https://github.com/jonesdevelopment/sonar
 # Documentation: https://docs.jonesdev.xyz/administration/configuring-sonar
 # Copyright Jones Development and Sonar Contributors, licence sous GPL-3.0
@@ -43,7 +43,7 @@ attack-tracker:
 # Remarque : Les adresses IP sont enregistrées en texte brut. Vous êtes responsable de la sécurité de votre base de données !
 database:
   # Type de base de données utilisé par Sonar pour stocker les joueurs vérifiés
-  # Types possibles : NONE, MYSQL, MARIADB, H2
+  # Types possibles : NONE, MYSQL, MARIADB, POSTGRESQL, H2
   type: NONE
   # Fichier dans le répertoire des plugins de Sonar utilisé pour la base de données H2
   filename: verified_players
@@ -111,6 +111,7 @@ verification:
       background: ''
       # Style de la carte CAPTCHA (par défaut : 'moderne').
       # Pour utiliser l'ancien design, mettez ce paramètre à 'legacy'.
+      # To use an experimental design, set this to 'complex'.
       style: 'modern'
       # Combien de réponses Sonar devrait-il préparer ?
       # Cette tâche se déroule de manière asynchrone en arrière-plan
@@ -129,7 +130,7 @@ verification:
       # Sonar devrait-il vérifier les marques client valides ? (Recommandé)
       enabled: true
       # Regex pour valider les marques client lors de la vérification
-      valid-regex: ^[!-~ ]+$
+      valid-regex: ^[!-~ §]+$
       # Longueur maximale de la marque client lors de la vérification
       max-length: 64
 
@@ -185,6 +186,9 @@ verification:
   # Cette fonctionnalité est expérimentale et peut causer des problèmes
   # Si cela est désactivé, les joueurs Bedrock seront ignorés
   check-geyser-players: false
+  # Sonar devrait-il également vérifier les joueurs EaglercraftX ?
+  # Cette fonctionnalité est expérimentale et peut causer des problèmes.
+  check-eagler-players: false
   # Temps écoulé depuis que le joueur a cessé d'envoyer des paquets avant de se déconnecter
   # (Cette valeur représente le temps en millisecondes : 1 seconde = 1000 millisecondes)
   read-timeout: 8000

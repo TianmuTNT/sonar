@@ -11,7 +11,7 @@ allprojects {
   repositories {
     mavenCentral()
     maven(url = "https://repo.jonesdev.xyz/releases/") // Bungee & Velocity proxy module
-    maven(url = "https://s01.oss.sonatype.org/content/repositories/snapshots/") // libby
+    maven(url = "https://repo.alessiodp.com/snapshots/") // libby
   }
 
   apply(plugin = "java")
@@ -62,6 +62,7 @@ allprojects {
       relocate("org.mariadb", "xyz.jonesdev.sonar.libs.mariadb")
       relocate("org.h2", "xyz.jonesdev.sonar.libs.h2")
       relocate("com.jhlabs", "xyz.jonesdev.sonar.libs.jhlabs")
+      relocate("org.postgresql", "xyz.jonesdev.sonar.libs.postgresql")
 
       // Exclude unnecessary metadata information
       exclude("META-INF/*/**")
@@ -101,7 +102,7 @@ allprojects {
 tasks {
   // This is a small wrapper tasks to simplify the building process
   register("build-sonar") {
-    val subprojects = listOf("api", "captcha", "common", "bukkit", "bungeecord", "velocity")
+    val subprojects = listOf("api", "captcha", "common", "bukkit", "bungeecord", "paper", "velocity")
     val buildTasks = subprojects.flatMap { listOf("$it:clean", "$it:spotlessApply", "$it:shadowJar") }
     dependsOn(buildTasks)
   }

@@ -8,7 +8,7 @@
 # |  $$$$$$/|  $$$$$$/| $$  | $$|  $$$$$$$| $$
 #  \______/  \______/ |__/  |__/ \_______/|__/
 #
-# Need help or have questions? https://jonesdev.xyz/discord
+# Need help or have questions? https://sonar.top/discord
 # Source code: https://github.com/jonesdevelopment/sonar
 # Documentation: https://docs.jonesdev.xyz/administration/configuring-sonar
 # Copyright Jones Development and Sonar Contributors, licensed under GPL-3.0
@@ -43,7 +43,7 @@ attack-tracker:
 # Note: IP addresses are saved in plain text. You are responsible for keeping your database safe!
 database:
   # Type of database Sonar uses to store verified players
-  # Possible types: NONE, MYSQL, MARIADB, H2
+  # Possible types: NONE, MYSQL, MARIADB, POSTGRESQL, H2
   type: NONE
   # File in Sonar's plugin directory used for the H2 database
   filename: verified_players
@@ -111,6 +111,7 @@ verification:
       background: ''
       # Style of the map CAPTCHA (Default: 'modern').
       # To use the old design, set this to 'legacy'.
+      # To use an experimental design, set this to 'complex'.
       style: 'modern'
       # How many CAPTCHA answers should Sonar prepare?
       # This task happens asynchronously in the background
@@ -130,7 +131,7 @@ verification:
       # Should Sonar check for valid client brands? (Recommended)
       enabled: true
       # Regex for validating client brands during verification
-      valid-regex: ^[!-~ ]+$
+      valid-regex: ^[!-~ §]+$
       # Maximum client brand length during verification
       max-length: 64
 
@@ -186,6 +187,9 @@ verification:
   # This feature is experimental and might cause issues
   # If this is disabled, Bedrock players will be skipped
   check-geyser-players: false
+  # Should Sonar also check EaglercraftX players?
+  # This feature is experimental and might cause issues
+  check-eagler-players: false
   # The time since the player stopped sending packets before disconnecting
   # (This value represents the time in milliseconds: 1 second = 1000 milliseconds)
   read-timeout: 8000

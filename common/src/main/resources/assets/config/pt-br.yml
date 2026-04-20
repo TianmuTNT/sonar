@@ -8,7 +8,7 @@
 # |  $$$$$$/|  $$$$$$/| $$  | $$|  $$$$$$$| $$
 #  \______/  \______/ |__/  |__/ \_______/|__/
 #
-# Precisa de ajuda ou tem dúvidas? https://jonesdev.xyz/discord
+# Precisa de ajuda ou tem dúvidas? https://sonar.top/discord
 # Código-fonte: https://github.com/jonesdevelopment/sonar
 # Copyright Jones Development e Sonar Contributors, licenciado sob GPL-3.0
 #
@@ -42,7 +42,7 @@ attack-tracker:
 # Nota: Endereços IP são salvos em texto simples. Você é responsável por manter seu banco de dados seguro!
 database:
   # Tipo de banco de dados que o Sonar usa para armazenar jogadores verificados
-  # Tipos possíveis: NONE, MYSQL, MARIADB, H2
+  # Tipos possíveis: NONE, MYSQL, MARIADB, POSTGRESQL, H2
   type: NONE
   # Arquivo no diretório de plugins do Sonar usado para o banco de dados H2
   filename: verified_players
@@ -110,6 +110,7 @@ verification:
       background: ''
       # Estilo do CAPTCHA do mapa (Padrão: 'modern').
       # Para usar o design antigo, defina-o como 'legacy'.
+      # To use an experimental design, set this to 'complex'.
       style: 'modern'
       # Quantas respostas de CAPTCHA o Sonar deve preparar?
       # Esta tarefa acontece de forma assíncrona em segundo plano
@@ -129,7 +130,7 @@ verification:
       # O Sonar deve verificar marcas de cliente válidas? (Recomendado)
       enabled: true
       # Regex para validar marcas de cliente durante a verificação
-      valid-regex: ^[!-~ ]+$
+      valid-regex: ^[!-~ §]+$
       # Comprimento máximo da marca de cliente durante a verificação
       max-length: 64
 
@@ -185,6 +186,9 @@ verification:
   # Este recurso é experimental e pode causar problemas
   # Se isso estiver desativado, jogadores Bedrock serão ignorados
   check-geyser-players: false
+  # O Sonar também deve verificar os jogadores do EaglercraftX?
+  # Este recurso é experimental e pode causar problemas.
+  check-eagler-players: false
   # O tempo desde que o jogador parou de enviar pacotes antes de desconectar
   # (Este valor representa o tempo em milissegundos: 1 segundo = 1000 milissegundos)
   read-timeout: 8000

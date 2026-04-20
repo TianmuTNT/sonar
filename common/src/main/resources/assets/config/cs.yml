@@ -8,7 +8,7 @@
 # |  $$$$$$/|  $$$$$$/| $$  | $$|  $$$$$$$| $$
 #  \______/  \______/ |__/  |__/ \_______/|__/
 #
-# Potřebujete pomoc nebo máte otázky? https://jonesdev.xyz/discord
+# Potřebujete pomoc nebo máte otázky? https://sonar.top/discord
 # Zdrojový kód: https://github.com/jonesdevelopment/sonar
 # Dokumentace: https://docs.jonesdev.xyz/administration/configuring-sonar
 # Copyright Jones Development and Sonar Contributors, licencováno pod GPL-3.0
@@ -44,7 +44,7 @@ attack-tracker:
 # Nicméně, IP adresy nemůžou být vystopovány zpátky k hráči, protože Sonar používá UUID na ukládní místo jmeno hráčů
 database:
   # Typy datábázi se kterýma Sonar bude pracovat
-  # Typy: NONE, MYSQL, MARIADB, H2
+  # Typy: NONE, MYSQL, MARIADB, POSTGRESQL, H2
   type: NONE
   # Soubor v adresáři zásuvných modulů Sonaru použitý pro databázi H2
   filename: verified_players
@@ -112,6 +112,7 @@ verification:
       background: ''
       # Styl mapy CAPTCHA (Výchozí: 'modern').
       # Chcete-li použít starý design, nastavte tuto hodnotu na 'legacy'.
+      # To use an experimental design, set this to 'complex'.
       style: 'modern'
       # Kolik odpovědí by měl Sonar předgenerovat?
       # Tento úkol běží souběžně v pozadí
@@ -130,7 +131,7 @@ verification:
       # Měl by Sonar zkoušet pro validitu "client brandu"? (Doporučeno)
       enabled: true
       # Regex pro validitaci "client brand"
-      valid-regex: ^[!-~ ]+$
+      valid-regex: ^[!-~ §]+$
       # Maximální délka "client brand" při verifikaci
       max-length: 64
 
@@ -186,6 +187,9 @@ verification:
   # Tato funkce je experimentální a může způsobit problémy
   # Pokud je toto zakázáno, hráči Bedrock budou přeskočeni
   check-geyser-players: false
+  # Měl by Sonar kontrolovat také hráče EaglercraftX?
+  # Tato funkce je experimentální a může způsobit problémy.
+  check-eagler-players: false
   # Doba, za kterou hráč přestal odesílat pakety před odpojením
   # (Hodnota udávaná v milisekundách: 1 sekunda = 1000 milisekund)
   read-timeout: 8000

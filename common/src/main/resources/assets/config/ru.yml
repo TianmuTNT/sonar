@@ -8,7 +8,7 @@
 # |  $$$$$$/|  $$$$$$/| $$  | $$|  $$$$$$$| $$
 #  \______/  \______/ |__/  |__/ \_______/|__/
 #
-# Нужна помощь или есть вопросы? https://jonesdev.xyz/discord
+# Нужна помощь или есть вопросы? https://sonar.top/discord
 # Исходный код: https://github.com/jonesdevelopment/sonar
 # Документация: https://docs.jonesdev.xyz/administration/configuring-sonar
 # Copyright Jones Development and Sonar Contributors, под лицензией GPL-3.0
@@ -43,7 +43,7 @@ attack-tracker:
 # Примечание: IP-адреса сохраняются в виде обычного текста. Вы сами отвечаете за сохранность своей базы данных!
 database:
   # Тип базы данных, которую Sonar использует для хранения проверенных игроков.
-  # Возможные типы: NONE, MYSQL, MARIADB, H2
+  # Возможные типы: NONE, MYSQL, MARIADB, POSTGRESQL, H2
   type: NONE
   # Файл в каталоге плагинов Sonar, используемый для базы данных H2
   filename: verified_players
@@ -110,6 +110,7 @@ verification:
       background: ''
       # Стиль капч (по умолчанию: 'modern').
       # Чтобы использовать старый дизайн, установите значение 'legacy'.
+      # To use an experimental design, set this to 'complex'.
       style: 'modern'
       # Сколько капч должен подготовить Sonar?
       # Эта задача выполняется асинхронно в фоновом режиме
@@ -128,7 +129,7 @@ verification:
       # Должен ли Sonar проверять наличие действительных клиентских брендов? (Рекомендуется)
       enabled: true
       # Regex для проверки брендов клиентов во время верификации
-      valid-regex: ^[!-~ ]+$
+      valid-regex: ^[!-~ §]+$
       # Максимальная длина бренда клиента при проверке
       max-length: 64
 
@@ -184,6 +185,9 @@ verification:
   # Эта функция экспериментальна и может вызывать проблемы
   # Если это отключено, игроки Bedrock будут пропущены
   check-geyser-players: false
+  # Должен ли Sonar также проверять игроков EaglercraftX?
+  # Эта функция является экспериментальной и может вызывать проблемы.
+  check-eagler-players: false
   # Время, прошедшее с момента прекращения отправки пакетов игроком до отключения.
   # (Это значение представляет время в миллисекундах: 1 секунда = 1000 миллисекунд)
   read-timeout: 8000

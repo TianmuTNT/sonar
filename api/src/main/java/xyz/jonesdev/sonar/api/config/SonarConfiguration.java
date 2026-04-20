@@ -30,6 +30,7 @@ import xyz.jonesdev.sonar.api.command.SonarCommand;
 import xyz.jonesdev.sonar.api.database.ormlite.H2DatabaseTypeAdapter;
 import xyz.jonesdev.sonar.api.database.ormlite.MariaDbDatabaseTypeAdapter;
 import xyz.jonesdev.sonar.api.database.ormlite.MysqlDatabaseTypeAdapter;
+import xyz.jonesdev.sonar.api.database.ormlite.PostgresDatabaseTypeAdapter;
 import xyz.jonesdev.sonar.api.webhook.DiscordWebhook;
 
 import java.io.File;
@@ -139,7 +140,7 @@ public final class SonarConfiguration {
 
     // General settings
     logPlayerAddresses = generalConfig.getBoolean("general.log-player-addresses");
-    maxOnlinePerIp = clamp(generalConfig.getInt("general.max-online-per-ip"), 0, 99);
+    maxOnlinePerIp = clamp(generalConfig.getInt("general.max-online-per-ip"), -1, 99);
 
     // Attack tracker
     minPlayersForAttack = clamp(generalConfig.getInt("attack-tracker.min-players-for-attack"), 2, 1024);
@@ -200,6 +201,7 @@ public final class SonarConfiguration {
     verification.validNameRegex = Pattern.compile(generalConfig.getString("verification.checks.valid-name-regex"));
 
     verification.checkGeyser = generalConfig.getBoolean("verification.check-geyser-players");
+    verification.checkEagler = generalConfig.getBoolean("verification.check-eagler-players");
     verification.logConnections = generalConfig.getBoolean("verification.log-connections");
     verification.logDuringAttack = generalConfig.getBoolean("verification.log-during-attack");
     verification.debugXYZPositions = generalConfig.getBoolean("verification.debug-xyz-positions");
@@ -414,6 +416,7 @@ public final class SonarConfiguration {
 
     private int timeOfDay;
     private boolean checkGeyser;
+    private boolean checkEagler;
     private boolean logConnections;
     private boolean logDuringAttack;
     private boolean debugXYZPositions;
@@ -467,6 +470,13 @@ public final class SonarConfiguration {
           .artifactId("h2")
           .version("2.2.220")
           .relocate("org{}h2", "xyz{}jonesdev{}sonar{}libs{}h2")
+          .build()),
+      POSTGRESQL("PostgreSQL", "jdbc:postgresql://%s:%d/%s%s", new PostgresDatabaseTypeAdapter(),
+        Library.builder()
+          .groupId("org{}postgresql")
+          .artifactId("postgresql")
+          .version("42.7.8")
+          .relocate("org{}postgresql", "xyz{}jonesdev{}sonar{}libs{}postgresql")
           .build()),
       NONE("None", null, null, null);
 

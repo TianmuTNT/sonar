@@ -21,11 +21,11 @@ import net.kyori.adventure.audience.Audience;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import xyz.jonesdev.sonar.api.antibot.AntiBot;
 import xyz.jonesdev.sonar.api.command.subcommand.SubcommandRegistry;
 import xyz.jonesdev.sonar.api.config.SonarConfiguration;
 import xyz.jonesdev.sonar.api.database.controller.VerifiedPlayerController;
 import xyz.jonesdev.sonar.api.event.SonarEventManager;
-import xyz.jonesdev.sonar.api.fallback.Fallback;
 import xyz.jonesdev.sonar.api.logger.LoggerWrapper;
 import xyz.jonesdev.sonar.api.notification.ActionBarNotificationHandler;
 import xyz.jonesdev.sonar.api.notification.ChatNotificationHandler;
@@ -152,12 +152,12 @@ public interface Sonar {
   }
 
   /**
-   * Gets the anti-bot handler (called "Fallback") for Sonar.
+   * Gets the anti-bot handler for Sonar.
    *
-   * @return The {@link Fallback} instance.
+   * @return The {@link AntiBot} instance.
    */
-  @NotNull default Fallback getFallback() {
-    return Fallback.INSTANCE;
+  @NotNull default AntiBot getAntiBot() {
+    return AntiBot.INSTANCE;
   }
 
   /**

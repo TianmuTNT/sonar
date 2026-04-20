@@ -8,7 +8,7 @@
 # |  $$$$$$/|  $$$$$$/| $$  | $$|  $$$$$$$| $$
 #  \______/  \______/ |__/  |__/ \_______/|__/
 #
-# Hulp nodig of vragen? https://jonesdev.xyz/discord
+# Hulp nodig of vragen? https://sonar.top/discord
 # Broncode: https://github.com/jonesdevelopment/sonar
 # Documentatie: https://docs.jonesdev.xyz/administration/configuring-sonar
 # Copyright Jones Development and Sonar Contributors, gelicentieerd onder GPL-3.0
@@ -43,7 +43,7 @@ attack-tracker:
 # Let op: IP-adressen worden opgeslagen in platte tekst. U bent verantwoordelijk voor het veilig houden van uw database!
 database:
   # Type database dat Sonar gebruikt om geverifieerde spelers op te slaan
-  # Mogelijke typen: NONE, MYSQL, MARIADB, H2
+  # Mogelijke typen: NONE, MYSQL, MARIADB, POSTGRESQL, H2
   type: NONE
   # Bestand in de plugin-directory van Sonar dat wordt gebruikt voor de H2-database
   filename: verified_players
@@ -111,6 +111,7 @@ verification:
       background: ''
       # Stijl van de CAPTCHA kaart (Standaard: 'modern').
       # Om het oude ontwerp te gebruiken, stel je dit in op 'legacy'.
+      # To use an experimental design, set this to 'complex'.
       style: 'modern'
       # Hoeveel antwoorden moet Sonar voorbereiden?
       # Deze taak gebeurt asynchroon op de achtergrond
@@ -129,7 +130,7 @@ verification:
       # Moet Sonar controleren op geldige Minecraft-klantmerk? (Aanbevolen)
       enabled: true
       # Regex voor het valideren van Minecraft-klantmerken tijdens verificatie
-      valid-regex: ^[!-~ ]+$
+      valid-regex: ^[!-~ §]+$
       # Maximale lengte van het Minecraft-klantmerk tijdens verificatie
       max-length: 64
 
@@ -181,6 +182,9 @@ verification:
   # Moet Sonar elke beweging/positieverandering tijdens de verificatie registreren?
   # Dit wordt niet aanbevolen voor productieservers, maar kan nuttig zijn bij het opsporen van fouten.
   debug-xyz-positions: false
+  # Moet Sonar ook EaglercraftX-spelers controleren?
+  # Deze functie is experimenteel en kan problemen veroorzaken.
+  check-eagler-players: false
   # Moet Sonar ook Geyser (Bedrock) spelers controleren?
   # Deze functie is experimenteel en kan problemen veroorzaken
   # Als dit is uitgeschakeld, worden Bedrock-spelers overgeslagen

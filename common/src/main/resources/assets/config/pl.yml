@@ -8,7 +8,7 @@
 # |  $$$$$$/|  $$$$$$/| $$  | $$|  $$$$$$$| $$
 #  \______/  \______/ |__/  |__/ \_______/|__/
 #
-# Potrzebujesz pomocy lub masz pytania? https://jonesdev.xyz/discord
+# Potrzebujesz pomocy lub masz pytania? https://sonar.top/discord
 # Source code: https://github.com/jonesdevelopment/sonar
 # Dokumentacja: https://docs.jonesdev.xyz/administration/configuring-sonar
 # Copyright Jones Development and Sonar Contributors, na licencji GPL-3.0
@@ -43,7 +43,7 @@ attack-tracker:
 # Uwaga: Adresy IP są zapisywane w postaci zwykłego tekstu. Jesteś odpowiedzialny za bezpieczeństwo swojej bazy danych!
 database:
   # Typ bazy danych używanej przez Sonar.
-  # Dostępne rodzaje: NONE, MYSQL, MARIADB, H2
+  # Dostępne rodzaje: NONE, MYSQL, MARIADB, POSTGRESQL, H2
   type: NONE
   # Plik w folderze pluginu używany dla bazy danych H2
   filename: verified_players
@@ -111,6 +111,7 @@ verification:
       background: ''
       # Styl mapy CAPTCHA (domyślnie: 'nowoczesny').
       # Aby użyć starego projektu, ustaw to na 'legacy'.
+      # To use an experimental design, set this to 'complex'.
       style: 'modern'
       # Ile możliwych odpowiedzi powinien przygotować Sonar?
       # Zadanie to wykonywane jest asynchronicznie w tle
@@ -129,7 +130,7 @@ verification:
       # Czy Sonar powinien sprawdzać poprawność client brand? (Zalecane)
       enabled: true
       # Regex do sprawdzania poprawności client brand podczas weryfikacji
-      valid-regex: ^[!-~ ]+$
+      valid-regex: ^[!-~ §]+$
       # Maksymalna długość wartości client brand podczas weryfikacji
       max-length: 64
 
@@ -185,6 +186,9 @@ verification:
   # Ta funkcja jest eksperymentalna i może powodować problemy
   # Jeśli ta opcja jest wyłączona, gracze Bedrock będą pomijani
   check-geyser-players: false
+  # Czy Sonar powinien również sprawdzać graczy EaglercraftX?
+  # Ta funkcja jest eksperymentalna i może powodować problemy.
+  check-eagler-players: false
   # Czas, jaki ma upłynąć od zatrzymania wysyłania pakietów przez gracza do wyrzucenia.
   # (Wartość ta reprezentuje czas w milisekundach: 1 sekunda = 1000 milisekund)
   read-timeout: 8000

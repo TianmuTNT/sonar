@@ -36,9 +36,9 @@ import xyz.jonesdev.sonar.api.notification.ActionBarNotificationHandler;
 import xyz.jonesdev.sonar.api.notification.ChatNotificationHandler;
 import xyz.jonesdev.sonar.api.statistics.SonarStatistics;
 import xyz.jonesdev.sonar.api.timer.SystemTimer;
-import xyz.jonesdev.sonar.common.fallback.protocol.FallbackPreparer;
-import xyz.jonesdev.sonar.common.fallback.ratelimit.CaffeineCacheRatelimiter;
-import xyz.jonesdev.sonar.common.fallback.ratelimit.NoopCacheRatelimiter;
+import xyz.jonesdev.sonar.common.protocol.SonarPacketPreparer;
+import xyz.jonesdev.sonar.common.ratelimit.CaffeineCacheRatelimiter;
+import xyz.jonesdev.sonar.common.ratelimit.NoopCacheRatelimiter;
 import xyz.jonesdev.sonar.common.service.ScheduledServiceManager;
 import xyz.jonesdev.sonar.common.statistics.GlobalSonarStatistics;
 import xyz.jonesdev.sonar.common.subcommand.*;
@@ -137,26 +137,26 @@ public abstract class SonarBootstrap<T> implements Sonar {
 
     // Prepare cached packets
     getLogger().info("Taking cached snapshots of all packets...");
-    FallbackPreparer.prepare();
+    SonarPacketPreparer.prepare();
 
     // Update ratelimiter cache
-    getFallback().setRatelimiter(getConfig().getVerification().getReconnectDelay() > 0L
+    getAntiBot().setRatelimiter(getConfig().getVerification().getReconnectDelay() > 0L
       ? new CaffeineCacheRatelimiter(Duration.ofMillis(getConfig().getVerification().getReconnectDelay()))
       : NoopCacheRatelimiter.INSTANCE);
 
     // Update blacklist cache
     final long blacklistTime = getConfig().getVerification().getBlacklistTime();
-    final boolean blacklistExists = getFallback().getBlacklist() != null;
+    final boolean blacklistExists = getAntiBot().getBlacklist() != null;
     // Make sure the blacklist is only set when we need it to prevent data loss
     if (!blacklistExists // Make sure we create a new cache if it doesn't exist yet
-      || getFallback().getBlacklistTime() != blacklistTime) {
+      || getAntiBot().getBlacklistTime() != blacklistTime) {
       // Create a new cache with the configured blacklist time
-      getFallback().setBlacklist(Caffeine.newBuilder()
+      getAntiBot().setBlacklist(Caffeine.newBuilder()
         .expireAfterWrite(Duration.ofMillis(getConfig().getVerification().getBlacklistTime()))
         .ticker(Ticker.systemTicker())
         .build());
       // Store the new blacklist time, so we don't have to reset the blacklist every reload
-      getFallback().setBlacklistTime(blacklistTime);
+      getAntiBot().setBlacklistTime(blacklistTime);
       // Warn the user about changing the expiry of the blacklist values
       if (blacklistExists) {
         getLogger().warn("The blacklist has been reset as the duration of entries has changed.");
